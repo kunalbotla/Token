@@ -44,6 +44,9 @@
                                         <integer key="value" value="45"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="ruj-xx-3s6"/>
+                                </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="1" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="yuv-fq-tdj">
                                 <rect key="frame" x="0.0" y="252" width="375" height="162"/>
@@ -65,6 +68,9 @@
                                         <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="cRO-Oa-0dD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77P-EB-wIi">
                                 <rect key="frame" x="16" y="422" width="80" height="80"/>
@@ -79,12 +85,20 @@
                                         <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pauseresumeButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="A1Y-aR-bik"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="first" selectedImage="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="pauseresumeButtonOutlet" destination="77P-EB-wIi" id="XWR-SB-KCK"/>
+                        <outlet property="timeDisplay" destination="vKy-L7-PX7" id="MeJ-OK-1LN"/>
+                        <outlet property="timePicker" destination="yuv-fq-tdj" id="cbK-I0-PQb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
