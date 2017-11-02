@@ -10,67 +10,51 @@ import UIKit
 
 class FirstViewController: UIViewController {
 //New Code
-    //Variables
-    
-    //Functions
     
     //Objects
     @IBOutlet weak var timeDisplay: UILabel!
+    
+    var seconds = 60
+    var timer = Timer()
+    var timerIsRunning = false
+    var resumeTapped = false
+    
    
     @IBOutlet weak var timePicker: UIDatePicker!
     
     @IBAction func startButton(_ sender: UIButton) {
+        runTimer()
     }
     
     @IBAction func pauseresumeButton(_ sender: UIButton) {
+        if self.resumeTapped == false {
+            timer.invalidate()
+            self.resumeTapped = true
+        }
+        else {
+            runTimer()
+            self.resumeTapped = false
+        }
     }
     
     @IBOutlet weak var pauseresumeButtonOutlet: UIButton!
     
     @IBAction func resetButton(_ sender: UIButton) {
-    }
-    
-    
-    
-    //Old from Debate Timer
-    
-    @IBAction func caseButton(_ sender: Any) {
-        if timerIsRunning == false {
-            seconds = 240
-            runTimer()
-        }
-        else {
-            //reset timer set time then run
-            resetTimer()
-            seconds = 240
-            runTimer()
-        }
-    }
-   
-    @IBOutlet weak var pauseButtonOutlet: UIButton!
-    
-    @IBAction func resetButton(_ sender: Any) {
-        resetTimer()
-    }
-    func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
-        
-        timerIsRunning = true
-    }
-    @objc func updateTimer() {
-        if seconds < 1 {
-            timer.invalidate()
-            //send alert to inicate timer is up
-        }
-        else {
-            seconds -= 1 //This will count down seconds.
-            timeDisplay.text = timeString(time: TimeInterval(seconds)) //This will update the label.
-        }
-    }
-    func resetTimer() {
         timer.invalidate()
-        //Reset all variables.
+        seconds = 60
+        timeDisplay.text = "\(seconds)"
     }
+    
+    //Functions
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(FirstViewController.updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        seconds -= 1 //This will count down seconds.
+        timeDisplay.text = timeString(time: TimeInterval(seconds)) //This will update the label.
+    }
+    
     func timeString(time:TimeInterval) -> String {
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60
@@ -78,8 +62,8 @@ class FirstViewController: UIViewController {
         
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
-    
     //<-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
