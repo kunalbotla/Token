@@ -15,6 +15,7 @@
 		1EB93D241F9AF931002852DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EB93D221F9AF931002852DE /* LaunchScreen.storyboard */; };
 		1EB93D2F1F9AF931002852DE /* Parking_Meter_ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB93D2E1F9AF931002852DE /* Parking_Meter_ReminderTests.swift */; };
 		1EB93D3A1F9AF931002852DE /* Parking_Meter_ReminderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB93D391F9AF931002852DE /* Parking_Meter_ReminderUITests.swift */; };
+		1EC25CC61FAFC46D008E4138 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC25CC51FAFC46D008E4138 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E367E081FAE6019000F8B1E /* Parking Meter Reminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Parking Meter Reminder.entitlements"; sourceTree = "<group>"; };
 		1EB93D141F9AF931002852DE /* Parking Meter Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Parking Meter Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB93D171F9AF931002852DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EB93D191F9AF931002852DE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 		1EB93D351F9AF931002852DE /* Parking Meter ReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Parking Meter ReminderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EB93D391F9AF931002852DE /* Parking_Meter_ReminderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parking_Meter_ReminderUITests.swift; sourceTree = "<group>"; };
 		1EB93D3B1F9AF931002852DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EC25CC51FAFC46D008E4138 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EC25CC61FAFC46D008E4138 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,7 @@
 				1EB93D2D1F9AF931002852DE /* Parking Meter ReminderTests */,
 				1EB93D381F9AF931002852DE /* Parking Meter ReminderUITests */,
 				1EB93D151F9AF931002852DE /* Products */,
+				1EC25CC41FAFC46D008E4138 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +104,7 @@
 		1EB93D161F9AF931002852DE /* Parking Meter Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				1E367E081FAE6019000F8B1E /* Parking Meter Reminder.entitlements */,
 				1EB93D171F9AF931002852DE /* AppDelegate.swift */,
 				1EB93D191F9AF931002852DE /* FirstViewController.swift */,
 				1EB93D1B1F9AF931002852DE /* SecondViewController.swift */,
@@ -126,6 +132,14 @@
 				1EB93D3B1F9AF931002852DE /* Info.plist */,
 			);
 			path = "Parking Meter ReminderUITests";
+			sourceTree = "<group>";
+		};
+		1EC25CC41FAFC46D008E4138 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EC25CC51FAFC46D008E4138 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +211,11 @@
 					1EB93D131F9AF931002852DE = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					1EB93D291F9AF931002852DE = {
 						CreatedOnToolsVersion = 9.0;
@@ -430,6 +449,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Parking Meter Reminder/Parking Meter Reminder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7E79B5SK54;
 				INFOPLIST_FILE = "Parking Meter Reminder/Info.plist";
@@ -446,6 +466,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Parking Meter Reminder/Parking Meter Reminder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7E79B5SK54;
 				INFOPLIST_FILE = "Parking Meter Reminder/Info.plist";
