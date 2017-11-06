@@ -12,6 +12,8 @@ import CoreLocation
 
 class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
+    var savedLocation = 0
+    
     @IBOutlet weak var locationMapView: MKMapView!
     
     let manager = CLLocationManager()
