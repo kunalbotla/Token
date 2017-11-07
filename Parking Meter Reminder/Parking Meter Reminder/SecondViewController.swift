@@ -12,12 +12,18 @@ import CoreLocation
 
 class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
-    var savedLocation = 0
+    var latitudeSavedLocation = 0
+    var longitudeSavedLocation = 0
     
     @IBOutlet weak var locationMapView: MKMapView!
     
-    let manager = CLLocationManager()
+    @IBAction func saveLocationButton(_ sender: UIButton) {
+        saveLocation()
+    }
     
+        let manager = CLLocationManager()
+   
+//Functions
     func locationManager(_ manager: CLLocationManager, didUpdateLocations location: [CLLocation]) {
         let location = location[0]
         
@@ -27,8 +33,20 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         locationMapView.setRegion(region, animated: true)
         
         self.locationMapView.showsUserLocation = true
+    
+    func saveLocation() {
+        latitudeSavedLocation = Int(location.coordinate.latitude)
+        longitudeSavedLocation = Int(location.coordinate.longitude)
         
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = myLocation
+        annotation.title = "Parked Car"
+        annotation.subtitle = "Saved Parked Car Location"
+        locationMapView.addAnnotation(annotation)
+        }
     }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
