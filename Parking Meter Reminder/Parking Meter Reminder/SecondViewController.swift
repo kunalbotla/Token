@@ -12,6 +12,9 @@ import CoreLocation
 
 class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
+    var latitudeCurrentLocation = 0
+    var longitudeCurrentLocation = 0
+    
     var latitudeSavedLocation = 0
     var longitudeSavedLocation = 0
     
@@ -21,29 +24,58 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         saveLocation()
     }
     
-        let manager = CLLocationManager()
-   
+    @IBAction func directionsButton(_ sender: UIButton) {
+        directions()
+    }
+    
+    let manager = CLLocationManager()
+//Variables/Constants
+    
 //Functions
     func locationManager(_ manager: CLLocationManager, didUpdateLocations location: [CLLocation]) {
         let location = location[0]
         
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
+        let myCurrentLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(myCurrentLocation, span)
         locationMapView.setRegion(region, animated: true)
         
+        latitudeCurrentLocation = Int(location.coordinate.latitude)
+        longitudeCurrentLocation = Int(location.coordinate.longitude)
+        
+        print(location.altitude)
+        print(location.speed)
+        
         self.locationMapView.showsUserLocation = true
+    }
     
     func saveLocation() {
-        latitudeSavedLocation = Int(location.coordinate.latitude)
-        longitudeSavedLocation = Int(location.coordinate.longitude)
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
+        let myCurrentLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitudeCurrentLocation), CLLocationDegrees(longitudeCurrentLocation))
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(myCurrentLocation, span)
+        locationMapView.setRegion(region, animated: true)
         
         let annotation = MKPointAnnotation()
-        annotation.coordinate = myLocation
+        annotation.coordinate = myCurrentLocation
         annotation.title = "Parked Car"
         annotation.subtitle = "Saved Parked Car Location"
         locationMapView.addAnnotation(annotation)
+        
+        latitudeCurrentLocation = latitudeSavedLocation
+        longitudeCurrentLocation = longitudeSavedLocation
         }
+    
+    func directions() {
+        let regionDistance:CLLocationDistance = 1000;
+        let mySavedLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(latitudeSavedLocation), CLLocationDegrees(longitudeSavedLocation))
+        let regionSpan = MKCoordinateRegionMakeWithDistance(mySavedLocation, regionDistance, regionDistance)
+        
+        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate:regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+        
+        let placemark = MKPlacemark(coordinate: mySavedLocation)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "Parked Car - Token"
+        mapItem.openInMaps(launchOptions: options)
     }
     
 

@@ -229,7 +229,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1EB93D0F1F9AF931002852DE /* Build configuration list for PBXProject "Parking Meter Reminder" */;
+			buildConfigurationList = 1EB93D0F1F9AF931002852DE /* Build configuration list for PBXProject "Token" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -453,9 +453,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7E79B5SK54;
 				INFOPLIST_FILE = "Parking Meter Reminder/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.botla.Parking-Meter-Reminder";
+				PRODUCT_BUNDLE_IDENTIFIER = com.botla.Token;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -470,9 +470,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7E79B5SK54;
 				INFOPLIST_FILE = "Parking Meter Reminder/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.botla.Parking-Meter-Reminder";
+				PRODUCT_BUNDLE_IDENTIFIER = com.botla.Token;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -548,7 +548,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1EB93D0F1F9AF931002852DE /* Build configuration list for PBXProject "Parking Meter Reminder" */ = {
+		1EB93D0F1F9AF931002852DE /* Build configuration list for PBXProject "Token" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EB93D3C1F9AF931002852DE /* Debug */,

@@ -136,6 +136,9 @@
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="directionsButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Atd-Ai-69o"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5L-Ff-pbM">
                                 <rect key="frame" x="210" y="500" width="150" height="50"/>
