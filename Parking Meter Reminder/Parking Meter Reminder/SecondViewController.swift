@@ -14,6 +14,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     var latitudeCurrentLocation = 0
     var longitudeCurrentLocation = 0
+    var speedCurrentLocation = 0
     
     var latitudeSavedLocation = 0
     var longitudeSavedLocation = 0
@@ -42,11 +43,35 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         
         latitudeCurrentLocation = Int(location.coordinate.latitude)
         longitudeCurrentLocation = Int(location.coordinate.longitude)
+        speedCurrentLocation = Int(location.speed)
         
         print(location.altitude)
         print(location.speed)
         
         self.locationMapView.showsUserLocation = true
+    }
+    
+    func speedWarning() {
+        func createAlert(title:String, message:String) {
+            var speedWarningSent = false
+            print(speedWarningSent)
+            if speedCurrentLocation < 10 {
+                if speedWarningSent == false {
+                    //let title:String = "Do Not Use Token When Drving"
+                    //let message:String = "Token has detected that you are at driving speeds"
+                    
+                    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style:UIAlertActionStyle.default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                        
+                        speedWarningSent = true
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+            }
+        }
     }
     
     func saveLocation() {
@@ -77,8 +102,6 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         mapItem.name = "Parked Car - Token"
         mapItem.openInMaps(launchOptions: options)
     }
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
