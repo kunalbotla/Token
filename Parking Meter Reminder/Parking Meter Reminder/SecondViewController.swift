@@ -12,9 +12,9 @@ import CoreLocation
 
 class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
-    var latitudeCurrentLocation = 0
-    var longitudeCurrentLocation = 0
-    var speedCurrentLocation = 0
+    var latitudeCurrentLocation: CLLocationDegrees
+    var longitudeCurrentLocation: CLLocationDegrees
+    var speedCurrentLocation: CLLocationDegrees
     
     var latitudeSavedLocation = 0
     var longitudeSavedLocation = 0
@@ -45,33 +45,17 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         longitudeCurrentLocation = Int(location.coordinate.longitude)
         speedCurrentLocation = Int(location.speed)
         
-        print(location.altitude)
-        print(location.speed)
-        
         self.locationMapView.showsUserLocation = true
-    }
-    
-    func speedWarning() {
-        func createAlert(title:String, message:String) {
-            var speedWarningSent = false
-            print(speedWarningSent)
-            if speedCurrentLocation < 10 {
-                if speedWarningSent == false {
-                    //let title:String = "Do Not Use Token When Drving"
-                    //let message:String = "Token has detected that you are at driving speeds"
-                    
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    alert.addAction(UIAlertAction(title: "OK", style:UIAlertActionStyle.default, handler: { (action) in
-                        alert.dismiss(animated: true, completion: nil)
-                        
-                        speedWarningSent = true
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }
-                
-            }
-        }
+        
+        //Testing
+         print("RawA", myCurrentLocation)
+         print("RawA latCL (var)", latitudeCurrentLocation)
+         print("RawA longCL (var)", longitudeCurrentLocation)
+         print("RawA speedCL (var)", speedCurrentLocation)
+        
+         print("RawA latCL (manager)", location.coordinate.latitude)
+         print("RawA longCL (manager)", location.coordinate.longitude)
+         print("RawA speedCL (manager)", location.speed)
     }
     
     func saveLocation() {
@@ -86,8 +70,13 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         annotation.subtitle = "Saved Parked Car Location"
         locationMapView.addAnnotation(annotation)
         
-        latitudeCurrentLocation = latitudeSavedLocation
-        longitudeCurrentLocation = longitudeSavedLocation
+        latitudeSavedLocation = latitudeCurrentLocation
+        longitudeSavedLocation = longitudeCurrentLocation
+        
+        //Testing of the location simplification bug. Caused due to lat, and long getting simplified. Must use location in how it is treated in func locationManager, let myCurrentLocation (Displayed 
+        print("Saved", latitudeSavedLocation,longitudeSavedLocation)
+        print("Current", latitudeCurrentLocation,longitudeCurrentLocation)
+        print("RawB", myCurrentLocation)
         }
     
     func directions() {
@@ -101,6 +90,33 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = "Parked Car - Token"
         mapItem.openInMaps(launchOptions: options)
+    }
+    
+    func speedWarning() {
+        func createAlert(title:String, message:String) {
+            var speedWarningSent = false
+            print(speedWarningSent)
+            
+            //Bug Testing
+            print("RawB Speed", speedCurrentLocation)
+            
+            if speedCurrentLocation < 20 {
+                if speedWarningSent == false {
+                    let title:String = "Do Not Use Token When Drving"
+                    let message:String = "Token has detected that you are at driving speeds"
+                    
+                    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style:UIAlertActionStyle.default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                        
+                        speedWarningSent = true
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+            }
+        }
     }
     
     override func viewDidLoad() {
