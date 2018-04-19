@@ -12,12 +12,12 @@ import CoreLocation
 
 class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
-    var latitudeCurrentLocation: CLLocationDegrees
-    var longitudeCurrentLocation: CLLocationDegrees
-    var speedCurrentLocation: CLLocationDegrees
+    var latitudeCurrentLocation: CLLocationDegrees = 0.0
+    var longitudeCurrentLocation: CLLocationDegrees = 0.0
+    var speedCurrentLocation: CLLocationDegrees = 0.0
     
-    var latitudeSavedLocation = 0
-    var longitudeSavedLocation = 0
+    var latitudeSavedLocation: CLLocationDegrees = 0.0
+    var longitudeSavedLocation: CLLocationDegrees = 0.0
     
     @IBOutlet weak var locationMapView: MKMapView!
     
@@ -41,9 +41,9 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         let region:MKCoordinateRegion = MKCoordinateRegionMake(myCurrentLocation, span)
         locationMapView.setRegion(region, animated: true)
         
-        latitudeCurrentLocation = Int(location.coordinate.latitude)
-        longitudeCurrentLocation = Int(location.coordinate.longitude)
-        speedCurrentLocation = Int(location.speed)
+        latitudeCurrentLocation = location.coordinate.latitude
+        longitudeCurrentLocation = location.coordinate.longitude
+        speedCurrentLocation = location.speed
         
         self.locationMapView.showsUserLocation = true
         
