@@ -30,9 +30,8 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     let manager = CLLocationManager()
-//Variables/Constants
     
-//Functions
+// Functions
     func locationManager(_ manager: CLLocationManager, didUpdateLocations location: [CLLocation]) {
         let location = location[0]
         
@@ -73,7 +72,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         latitudeSavedLocation = latitudeCurrentLocation
         longitudeSavedLocation = longitudeCurrentLocation
         
-        //Testing of the location simplification bug. Caused due to lat, and long getting simplified. Must use location in how it is treated in func locationManager, let myCurrentLocation (Displayed 
+        //Testing of the location simplification bug. Caused due to lat, and long getting simplified. Must use location in how it is treated in func locationManager, let myCurrentLocation (Displayed)
         print("Saved", latitudeSavedLocation,longitudeSavedLocation)
         print("Current", latitudeCurrentLocation,longitudeCurrentLocation)
         print("RawB", myCurrentLocation)
@@ -95,10 +94,10 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     func speedWarning() {
         func createAlert(title:String, message:String) {
             var speedWarningSent = false
-            print(speedWarningSent)
             
             //Bug Testing
             print("RawB Speed", speedCurrentLocation)
+            print(speedWarningSent)
             
             if speedCurrentLocation < 20 {
                 if speedWarningSent == false {
@@ -112,8 +111,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
                         
                         speedWarningSent = true
                     }))
-                    self.present(alert, animated: true, completion: nil)
-                }
+                 }
                 
             }
         }
